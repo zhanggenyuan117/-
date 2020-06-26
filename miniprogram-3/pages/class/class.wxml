@@ -1,0 +1,372 @@
+<!--pages/class/class.wxml-->
+
+
+
+<view class="search-top" >
+    <view class="search-form"  >
+     <input  class="search-button" value="{{inputValue}}" bindinput="junpToSearch" placeholder="请输入供应商名称/单据编号 " confirm-type='search' bindconfirm="onSearch"/>
+      <!-- <image src="/images/搜索.png" class="search-icon"></image> -->
+      <view class="search-icon-view" bindtap="searchDingDan"><image src="/images/search.png" class="search-icon"></image></view>
+    </view>
+    <view class="searchBtn" bindtap="showPopup">
+      <image mode="widthFix" src="/images/shaixuan.png"></image>
+    </view>
+</view>
+
+
+<van-popup show="{{ show }}" position="right" bind:close="onClose">
+  <view class="popup">
+    <!-- 开始时间 -->
+    <view class="section">
+      <picker mode="date" value="{{startDate}}" bindchange="bindDateChange">
+        <view class="picker">
+          <view wx:if="{{startDate===''}}" class="container">
+            <view>开始时间:</view>
+            <view class="timer">请选择时间</view>
+          </view>
+          <view wx:if="{{startDate!=''}}"  class="container">
+            <view>开始时间:</view>
+            <view class="timer">{{startDate}}</view>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <!-- 开始时间 -->
+    <!-- 结束时间 -->
+     <view class="section">
+      <picker mode="date" value="{{endDate}}" bindchange="bindDateChange1">
+        <view class="picker">
+          <view wx:if="{{endDate===''}}"  class="container">
+            <view>结束时间:</view>
+            <view class="timer">请选择时间</view>
+          </view>
+          <view wx:if="{{endDate!=''}}"  class="container">
+            <view>结束时间:</view>
+            <view class="timer">{{endDate}}</view>
+          </view>
+        </view>
+      </picker>
+    </view>
+    <!-- 结束时间 -->
+    <!-- 下拉框 -->
+    <view class="qingxuanze">
+      <text>请选择供应商:</text>
+      <van-dropdown-menu >
+        <van-dropdown-item bind:change="menuChange" value="{{ value1 }}" options="{{ option1 }}" />
+      </van-dropdown-menu>
+
+    </view>
+
+    <!--  -->
+    <view class="popupBtns">
+      <button bindtap="chongzhi">重置</button>
+      <button bindtap="queding">确定</button>
+    </view>
+  </view>
+</van-popup>
+
+<view class="tabNav">
+  <view wx:for="{{navTab}}" class="tabView" wx:key="index" data-idx="{{index}}" bindtap="currentTab" class="{{currentTab==index ? 'cur' : ''}}">
+    <text class="{{currentTab==index ? 'cur' : ''}}">{{item}}</text>
+  </view>
+</view>
+<view class="lista">
+  <!-- 全部订单 -->
+  <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower" 
+    
+    refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-triggered="{{triggered}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    refresher-background="rgba(247,247,247,1)"
+
+    wx:if="{{currentTab==0}}">
+    <view class="list" wx:for="{{sendList}}" wx:key="index">
+      <view class="list_jiemian" bindtap='tz' data-article_id="{{item.djbh}}" data-customerId="{{item.CustomerId}}" data-zhuangt="{{item.zhuangt}}" data-outboundorderid="{{item.outboundorderId}}" data-ManufactorName="{{item.ManufactorName}}" data-hsje="{{item.hsje}}"  data-is_pj="{{item.is_pj}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}" data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}">
+        <text class="cart_g_name">单据编号:</text>
+        <text class="cart_g_name1">{{item.djbh}}</text>
+        <text class="cart_g_namea">日期:</text>
+        <text class="cart_g_namea1">{{item.rq}}</text>
+        <text class="cart_g_nameb">供应商:</text>
+        <text class="cart_g_nameb1">{{item.ManufactorName}}</text>
+        <text class="cart_g_namec">订单总额:</text>
+        <text class="cart_g_namec1">¥{{item.je}}</text>
+        <view style='display:{{show_edit}}'>
+          <view class="carts-numqq">
+            <lable class="plusa" catchtap="tryCatch" data-obj="{{obj}}" data-index="{{index}}">{{item.zhuangt}}</lable>
+          </view>
+          <view class="carts-num">
+             <block wx:if="{{item.zhuangt == '已拒收'}}">
+             <!-- <lable class="plus" catchtap="jushouYuanYinHandle" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收原因</lable> -->
+             <lable class="plus" catchtap="jushouYuanYinHandle" data-index="{{index}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}" data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}" data-djbh="{{item.djbh}}">拒收原因</lable>
+            </block>
+            <!--减按钮 -->
+            <block wx:if="{{item.zhuangt == '已发货'}}">
+              <lable class="minus" catchtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}" data-hsje="{{item.hsje}}" data-ManufactorName="{{item.ManufactorName}}">确认收货</lable>
+              <lable class="minusa" catchtap="rejection" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+            <!-- <block wx:elif="{{item.zt == '未发货'||item.zt == '已拒收'}}">
+            </block> -->
+            <block wx:elif="{{item.zhuangt == '已收货'}}">
+              <lable class="minusa" catchtap="evaluate" data-index="{{index}}" wx:if="{{item.is_pj==0}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}">订单评价</lable>
+              <lable class="minusa" catchtap="getPingjia" data-index="{{index}}" wx:else>查看评价</lable>
+              <!-- 添加发票 -->
+              <lable class="minusa" catchtap="getFaPiao" data-index="{{index}}" data-djbh="{{item.djbh}}">查看发票</lable>
+            
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 未发货 -->
+  <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower"
+    refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-triggered="{{triggered}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    refresher-background="rgba(247,247,247,1)"
+   wx:if="{{currentTab==1}}">
+    <view class="list" wx:for="{{weifahuo}}" wx:key="index">
+      <view class="list_jiemian" bindtap='tz' data-article_id="{{item.djbh}}" data-customerId="{{item.CustomerId}}" data-zhuangt="{{item.zhuangt}}" data-outboundorderid="{{item.outboundorderId}}" data-ManufactorName="{{item.ManufactorName}}" data-hsje="{{item.hsje}}"  data-is_pj="{{item.is_pj}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}" data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}">
+        <text class="cart_g_name">单据编号:</text>
+        <text class="cart_g_name1">{{item.djbh}}</text>
+        <text class="cart_g_namea">日期:</text>
+        <text class="cart_g_namea1">{{item.rq}}</text>
+        <text class="cart_g_nameb">供应商:</text>
+        <text class="cart_g_nameb1">{{item.ManufactorName}}</text>
+        <text class="cart_g_namec">订单总额:</text>
+        <text class="cart_g_namec1">¥{{item.je}}</text>
+        <view style='display:{{show_edit}}'>
+          <view class="carts-numqq">
+            <lable class="plusa" catchtap="tryCatch" data-obj="{{obj}}" data-index="{{index}}">{{item.zhuangt}}</lable>
+          </view>
+          <view class="carts-num">
+            <!--减按钮 -->
+            <block wx:if="{{item.zhuangt == '已发货'}}">
+              <lable class="minus" catchtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}" data-hsje="{{item.hsje}}" data-ManufactorName="{{item.ManufactorName}}">确认收货</lable>
+              <lable class="minusa" catchtap="rejection" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+            <block wx:elif="{{item.zt == '未发货'||item.zt == '已拒收'}}">
+            </block>
+            <block wx:elif="{{item.zhuangt == '已收货'}}">
+              <lable class="minusa" catchtap="evaluate" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}">订单评价</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 已发货 -->
+  <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower"
+    refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-triggered="{{triggered}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    refresher-background="rgba(247,247,247,1)"
+   wx:if="{{currentTab==2}}">
+    <view class="list" wx:for="{{yifahuo}}" wx:key="index">
+      <view class="list_jiemian" bindtap='tz' data-article_id="{{item.djbh}}"  data-customerId="{{item.CustomerId}}" data-zhuangt="{{item.zhuangt}}" data-outboundorderid="{{item.outboundorderId}}" data-ManufactorName="{{item.ManufactorName}}" data-hsje="{{item.hsje}}"  data-is_pj="{{item.is_pj}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}" data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}">
+        <text class="cart_g_name">单据编号:</text>
+        <text class="cart_g_name1">{{item.djbh}}</text>
+        <text class="cart_g_namea">日期:</text>
+        <text class="cart_g_namea1">{{item.rq}}</text>
+        <text class="cart_g_nameb">供应商:</text>
+        <text class="cart_g_nameb1">{{item.ManufactorName}}</text>
+        <text class="cart_g_namec">订单总额:</text>
+        <text class="cart_g_namec1">¥{{item.je}}</text>
+        <view style='display:{{show_edit}}'>
+          <view class="carts-numqq">
+            <lable class="plusa" catchtap="tryCatch" data-obj="{{obj}}" data-index="{{index}}">{{item.zhuangt}}</lable>
+          </view>
+          <view class="carts-num">
+            <!--减按钮 -->
+            <block wx:if="{{item.zhuangt == '已发货'}}">
+              <lable class="minus" catchtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}" data-hsje="{{item.hsje}}" data-ManufactorName="{{item.ManufactorName}}">确认收货</lable>
+              <lable class="minusa" catchtap="rejection" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+            <block wx:elif="{{item.zt == '未发货'||item.zt == '已拒收'}}">
+            </block>
+            <block wx:elif="{{item.zhuangt == '已收货'}}">
+              <lable class="minusa" catchtap="evaluate" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}">订单评价</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 已收货 -->
+  <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower" 
+    refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-triggered="{{triggered}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    refresher-background="rgba(247,247,247,1)"
+  wx:if="{{currentTab==3}}">
+    <view class="list" wx:for="{{yishouhuo}}" wx:key="index">
+      <view class="list_jiemian" bindtap='tz' data-article_id="{{item.djbh}}"  data-customerId="{{item.CustomerId}}" data-zhuangt="{{item.zhuangt}}" data-outboundorderid="{{item.outboundorderId}}" data-ManufactorName="{{item.ManufactorName}}" data-hsje="{{item.hsje}}"  data-is_pj="{{item.is_pj}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}" data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}">
+        <text class="cart_g_name">单据编号:</text>
+        <text class="cart_g_name1">{{item.djbh}}</text>
+        <text class="cart_g_namea">日期:</text>
+        <text class="cart_g_namea1">{{item.rq}}</text>
+        <text class="cart_g_nameb">供应商:</text>
+        <text class="cart_g_nameb1">{{item.ManufactorName}}</text>
+        <text class="cart_g_namec">订单总额:</text>
+        <text class="cart_g_namec1">¥{{item.je}}</text>
+        <view style='display:{{show_edit}}'>
+          <view class="carts-numqq">
+            <lable class="plusa" catchtap="tryCatch" data-obj="{{obj}}" data-index="{{index}}">{{item.zhuangt}}</lable>
+          </view>
+          <view class="carts-num">
+            <!--减按钮 -->
+            <block wx:if="{{item.zhuangt == '已发货'}}">
+              <lable class="minus" catchtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}" data-hsje="{{item.hsje}}" data-ManufactorName="{{item.ManufactorName}}">确认收货</lable>
+              <lable class="minusa" catchtap="rejection" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+            <block wx:elif="{{item.zt == '未发货'||item.zt == '已拒收'}}">
+            </block>
+            <block wx:elif="{{item.zhuangt == '已收货'}}">
+              <lable class="minusa" catchtap="evaluate" data-index="{{index}}" wx:if="{{item.is_pj==0}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}">订单评价</lable>
+              <lable class="minusa" catchtap="getPingjia" data-index="{{index}}" wx:else>查看评价</lable>
+              <!-- 添加发票 -->
+              <lable class="minusa" catchtap="getFaPiao" data-index="{{index}}" data-djbh="{{item.djbh}}">查看发票</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 已拒收 -->
+  <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower"
+    refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-triggered="{{triggered}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    refresher-background="rgba(247,247,247,1)"
+   wx:if="{{currentTab==4}}">
+    <view class="list" wx:for="{{yijushou}}" wx:key="index">
+      <view class="list_jiemian" bindtap='tz' data-article_id="{{item.djbh}}" data-customerId="{{item.CustomerId}}" data-zhuangt="{{item.zhuangt}}" data-outboundorderid="{{item.outboundorderId}}" data-manufactorname="{{item.ManufactorName}}" data-hsje="{{item.hsje}}" data-is_pj="{{item.is_pj}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}" data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}">
+        <text class="cart_g_name">单据编号:</text>
+        <text class="cart_g_name1">{{item.djbh}}</text>
+        <text class="cart_g_namea">日期:</text>
+        <text class="cart_g_namea1">{{item.rq}}</text>
+        <text class="cart_g_nameb">供应商:</text>
+        <text class="cart_g_nameb1">{{item.ManufactorName}}</text>
+        <text class="cart_g_namec">订单总额:</text>
+        <text class="cart_g_namec1">¥{{item.je}}</text>
+        <view style='display:{{show_edit}}'>
+          <view class="carts-numqq">
+            <lable class="plusa" catchtap="tryCatch" data-obj="{{obj}}" data-index="{{index}}">{{item.zhuangt}}</lable>
+          </view>
+          <view class="carts-num">
+            <!--减按钮 -->
+            <block wx:if="{{item.zhuangt == '已发货'}}">
+              <lable class="minus" catchtap="btn_minus" data-obj="{{obj}}" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}" data-hsje="{{item.hsje}}" data-ManufactorName="{{item.ManufactorName}}">确认收货</lable>
+              <lable class="minusa" catchtap="rejection" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+            <!-- <block wx:elif="{{item.zt == '未发货'||item.zt == '已拒收'}}">
+            </block> -->
+            <block wx:if="{{item.zhuangt == '已拒收'}}">
+              <!-- <lable class="plus" catchtap="jushouYuanYinHandle" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">拒收原因</lable> -->
+              <lable class="plus" catchtap="jushouYuanYinHandle" data-index="{{index}}" data-jsly="{{item.jsly}}" data-jsurl="{{item.jsurl}}"  data-WxName="{{item.WxName}}" data-WxTxUrl="{{item.WxTxUrl}}"  data-djbh="{{item.djbh}}">拒收原因</lable>
+            </block>
+            <block wx:elif="{{item.zhuangt == '已收货'}}">
+              <lable class="minusa" catchtap="evaluate" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}" data-djbh="{{item.djbh}}">订单评价</lable>
+              <!-- 加按钮-->
+              <lable class="plus" catchtap="logistics" data-index="{{index}}" data-CustomerId="{{item.CustomerId}}"  data-djbh="{{item.djbh}}" data-outboundorderId="{{item.outboundorderId}}">物流信息</lable>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+
+
+<van-popup show="{{showJuShou}}" bind:close="onClose" id="van-popup">
+  <view class="jushouPopup">
+    <view class="jushouTitle">请输入拒收理由:</view>
+    <view class="inputPopupBox">
+      <view class="inputPopup">
+        <textarea placeholder='...' minlength="{{min}}" maxlength="{{max}}" value="{{jushouValue}}" bindinput="inputs"></textarea>
+      </view>
+    </view>
+    <view class="addImgIcon">
+      <!-- <view class="imgLoad" bindtap="getImages">
+        <image src="/images/shexiangtou.png"></image>
+        <text>上传图片</text>
+      </view> -->
+     <view class="chakanImgBox">
+          <view class="imgLoad" bindtap="getImages">
+        <image src="/images/shexiangtou.png"></image>
+        <text>上传图片</text>
+      </view>
+        <view wx:for="{{tempFilePaths}}" wx:key="index" class="chakanImg">
+          <image src="{{item}}" bindtap="getJuShouImgs" data-index="{{index}}"></image>
+        </view>
+     </view>
+    </view>
+    <view class="btnsPopup">
+      <view bindtap="quXiaoPopup">取消</view>
+      <view class="selectPopup" bindtap="selectPopup">确定</view>
+    </view>
+  </view>
+</van-popup>
+
+<!-- 拒收原因 -->
+
+<van-popup show="{{jushoouYuanYin}}" bind:close="onClose" class="jushouYuanYinPosition">
+ <view style="padding:20rpx">
+     <view class="jushouYuanYinBox">
+      <view class="jushouTitleChakn">拒收原因</view>
+    </view>
+
+    <view class="juSHouHeaderBox">
+      <view class="jushouImgBox">
+        <image src="{{juShouTouXiang}}"></image>
+      </view>
+      <view class="juShouDJBHBox">
+        <view class="jushouWeiINName">{{juShouWName}}</view>
+        <view class="juShouDJBH">单据编号:<text style="margin-left:15rpx">{{juShoudjbh}}</text></view>
+      </view>
+    </view>
+    <view class="jushouLiYouText">{{chaKanjsly}}</view>
+    <view class="ChakanJushoUImgBox">
+        <view wx:for="{{chaKanjsurl}}" wx:key="index" class="chakanJushouYuanYin">
+          <image src="{{item}}" bindtap="chakanJushouImgsYuLanHandle" data-index="{{index}}"></image>
+        </view>
+    </view>
+    
+
+    <view bindtap="gunabiJushouPopupHandle" class="juShoucloseTitle">关闭</view>
+ </view>
+</van-popup>

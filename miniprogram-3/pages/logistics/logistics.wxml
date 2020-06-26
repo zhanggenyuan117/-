@@ -1,0 +1,7 @@
+
+<view class="map_box">
+  <map id="navi_map" longitude="{{longitude}}" latitude="{{latitude}}" scale="12" markers="{{markers}}" polyline="{{polyline}}"></map>
+</view>
+
+
+

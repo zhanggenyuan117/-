@@ -1,0 +1,33 @@
+/* pages/index/index.wxss */
+.storesTheOrder{
+  margin-top: 100rpx;
+  padding: 30rpx;
+  height: 600rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.storesTheOrder input{
+  border: 1px solid #ccc;
+  width: 500rpx;
+  height: 50rpx;
+  margin-left: 30rpx;
+  border-radius: 10rpx;
+  padding-left:10rpx;
+}
+.inputView{
+  display: flex;  
+}
+.selectAdd{
+  display: flex;
+}
+.selectAdd picker{
+  margin-left: 30rpx;
+}
+.selectBtn{
+  background: #5ba2f3;
+  color: #fff;
+}
+.address input{
+  width: 90%;
+}

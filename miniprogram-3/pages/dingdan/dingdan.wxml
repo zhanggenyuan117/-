@@ -1,0 +1,154 @@
+<!--pages/DDMX/DDMX.wxml-->
+
+<view class="dingdanbox">
+  <view class="tabNav">
+    <view class="toua"></view>
+    <text class="tou">订单信息:</text>
+  </view>
+  <view class="lista">
+    <scroll-view scroll-y="true" lower-threshold="50" bindscrolltolower="lower" class="scrollView">
+      <view class="list" wx:for="{{dingDanList}}" wx:key="index">
+        <view>
+          <text class="cart_g_namea">订单编号</text>
+          <text class="cart_g_namea1">{{item.djbh}}</text>
+        </view>
+        <view>
+          <text class="cart_g_name">商品名称</text>
+          <text class="cart_g_name1">{{item.spmc}}</text>
+        </view>
+      
+        <view>
+          <text class="cart_g_nameb">批号</text>
+          <text class="cart_g_nameb1">{{item.pihao}}</text>
+        </view>
+        <view>
+          <text class="cart_g_namec">失效日期:</text>
+          <text class="cart_g_namec1">{{item.sxrq}}</text>
+        </view>
+        <view>
+          <text class="cart_g_namec">含税单价:</text>
+          <text class="cart_g_namec1">{{item.hshj}}</text>
+        </view>
+        <view>
+          <text class="cart_g_namec">包装单位:</text>
+          <text class="cart_g_namec1">{{item.dw}}</text>
+        </view>
+        <view>
+          <text class="cart_g_namec">数量:</text>
+          <text class="cart_g_namec1">{{item.shl}}</text>
+        </view>
+        <view>
+          <text class="cart_g_namec">含税金额:</text>
+          <text class="cart_g_namec1">{{item.hsje}}</text>
+        </view>
+        <!-- 质检报告按钮 -->
+        <view  wx:if="{{zhuangt == '已收货'}}" class="zhijian">
+          <view bindtap="qualityInspectionReport"  data-spid="{{item.spid}}" data-pihao="{{item.pihao}}" class="zhijianBtn">
+            质检报告
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 底部操作按钮 -->
+  <view class="zhuangtBtns">
+
+
+  <!-- 已拒收 -->
+    <view wx:if="{{zhuangt == '已拒收'}}" class="btnsBox">
+        <view class="yishouhuo">已拒收</view>
+        <view class="yishouhuo_view">
+          <view bindtap="jushouYuanYinHandle">拒收原因</view>
+          <!-- <view></view> -->
+          <!-- <view></view> -->
+        </view>
+    </view>
+
+
+
+    <!-- 已收货 -->
+      <view wx:if="{{zhuangt == '已收货'}}" class="btnsBox">
+          <view class="yishouhuo">已收货</view>
+          <view class="yishouhuo_view">
+            <view bindtap="onlyPing" wx:if="{{is_pj==1}}">查看评价</view>
+            <view bindtap="getEvaluate" wx:if="{{is_pj==0}}">订单评价</view>
+            <view bindtap="getFaPiao">查看发票</view>
+            <view bindtap="logistics">物流信息</view>
+          </view>
+      </view>
+  
+
+
+    <!-- 已发货 -->
+      <view wx:if="{{zhuangt == '已发货'}}" class="btnsBox">
+          <view class="yishouhuo">已发货</view>
+          <view class="yishouhuo_view">
+            <view bindtap="querenshouhuoHandle">确认收货</view>
+            <view bindtap="jushouHandle">拒收</view>
+            <view bindtap="logistics">物流信息</view>
+          </view>
+      </view>
+    
+
+  </view>
+</view>
+
+
+<!-- 拒收弹出框 -->
+
+<van-popup show="{{showJuShou}}" bind:close="onClose">
+  <view class="jushouPopup">
+    <view class="jushouTitle">请输入拒收理由:</view>
+    <view class="inputPopupBox">
+      <view class="inputPopup">
+        <textarea placeholder='...' minlength="{{min}}" maxlength="{{max}}" value="{{jushouValue}}" bindinput="inputs"></textarea>
+      </view>
+    </view>
+    <view class="addImgIcon">
+      <view class="imgLoad" bindtap="getImages">
+        <image src="/images/shexiangtou.png"></image>
+        <text>上传图片</text>
+      </view>
+     <view class="chakanImgBox">
+        <view wx:for="{{tempFilePaths}}" wx:key="index" class="chakanImg">
+          <image src="{{item}}" bindtap="prevImg" data-index="{{index}}"></image>
+        </view>
+     </view>
+    </view>
+    <view class="btnsPopup">
+      <view bindtap="quXiaoPopup">取消</view>
+      <view class="selectPopup" bindtap="selectPopup">确定</view>
+    </view>
+  </view>
+</van-popup>
+
+
+
+<!-- 拒收原因 -->
+
+<van-popup show="{{jushoouYuanYin}}" bind:close="onClose" class="jushouYuanYinPosition">
+ <view style="padding:20rpx;border-radius: 15rpx;">
+     <view class="jushouYuanYinBox">
+      <view class="jushouTitleChakn">拒收原因</view>
+    </view>
+
+    <view class="juSHouHeaderBox">
+      <view class="jushouImgBox">
+        <image src="{{wxtxurl}}"></image>
+      </view>
+      <view class="juShouDJBHBox">
+        <view class="jushouWeiINName">{{wxname}}</view>
+        <view class="juShouDJBH">单据编号:<text style="margin-left:15rpx">{{orderId}}</text></view>
+      </view>
+    </view>
+    <view class="jushouLiYouText">{{jsly}}</view>
+    <view class="ChakanJushoUImgBox">
+        <view wx:for="{{jsurl}}" wx:key="index" class="chakanJushouYuanYin">
+          <image src="{{item}}" bindtap="chakanJushouImgsYuLanHandle" data-index="{{index}}"></image>
+        </view>
+    </view>
+    
+
+    <view bindtap="gunabiJushouPopupHandle" class="juShoucloseTitle">关闭</view>
+ </view>
+</van-popup>

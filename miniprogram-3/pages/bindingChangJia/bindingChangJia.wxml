@@ -1,0 +1,20 @@
+ <view>
+    <view class="changjia">
+      <view class="changjiaView">
+        <view class="changjiaText">供应商信息:</view>
+        <view class="viewBox">
+          <input placeholder="请输入供应商名称" bindinput="selectChangjia"></input>
+          <view class="searchview" bindtap="changJiaSearchBtn"><image src="/images/search.png" class="searchIcon"></image></view>
+        </view>
+      </view>
+    </view>
+    <scroll-view scroll-y lower-threshold="50" bindscrolltolower="lower" class="scrollView">
+      <view wx:if="{{list}}">
+        
+        <view wx:for="{{list}}" wx:key="Id" class="forView">
+          <view bindtap="changeJia" data-ManufactorId ="{{item.ManufactorId}}" data-dwbh="{{item.dwbh}}">{{item.dwbh}}</view>
+        </view>
+
+      </view>
+    </scroll-view>
+ </view>

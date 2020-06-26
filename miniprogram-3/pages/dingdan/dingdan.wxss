@@ -1,0 +1,278 @@
+.dingdanbox {
+ display: flex;
+ flex-direction: column;
+}
+
+.tabNav {
+  z-index: 4;
+  position: fixed;
+  top: 0rpx;
+  left: 0;
+  width: 100%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  display: flex;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #f5f5f5;
+  box-sizing: border-box;
+}
+
+.toua {
+  position: absolute;
+  margin-top: 10rpx;
+  margin-left: 0;
+  margin-right: 10rpx;
+  width: 1;
+  height: 80%;
+  line-height: 80rpx;
+  background: rgb(10, 207, 233);
+  padding: 0 8rpx;
+}
+
+.tou {
+  position: absolute;
+  margin-left: 20rpx;
+  font-size: 26rpx;
+  color: rgb(82, 80, 80);
+  top: 0rpx;
+  width: 45%;
+  height: 40rpx;
+  text-align: left;
+}
+
+.lista {
+  padding-top: 80rpx;
+  /* padding-bottom: 100rpx; */
+  
+}
+ 
+
+.list {
+  padding: 20rpx;
+  border-bottom: 10rpx solid #f5f1f1;
+}
+
+.list>view {
+  display: flex;
+  justify-content: space-between;
+  font-size: 26rpx;
+  color: rgb(82, 80, 80);
+  margin-bottom: 10rpx;
+}
+
+.list>view>text:last-of-type {
+  color: rgb(14, 132, 187);
+}
+
+.scrollView{
+  height: calc(100vh - 205rpx);
+}
+
+/* 质检报告按钮 */
+/* .zhijian{
+  
+} */
+.zhijianBtn{
+  width: 80vw;
+  margin: 10rpx  auto 0;
+  padding: 15rpx 30rpx;
+  font-size: 26rpx;
+  background: rgba(40, 156, 233,0.8);
+  color:#fff;
+  border-radius: 30rpx;
+  text-align: center;
+}
+
+
+
+
+/* 最下方的 */
+.zhuangtBtns {
+  width: 100%;
+  height: 125rpx;
+  position: fixed;
+  bottom: 0;
+  border-top: 1rpx solid #dbdbdb;
+}
+
+.btnsBox{
+  height: 125rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.yishouhuo{
+  padding: 10rpx 20rpx;
+  border: 1rpx solid #dbdbdb;
+  color: #818181;
+  font-size: 28rpx;
+
+}
+.yishouhuo_view{
+  display: flex;
+  justify-content: space-around;
+}
+.yishouhuo_view>view{
+  border: 1rpx solid rgb(40, 156, 233);
+  color: rgb(40, 156, 233);
+  padding: 10rpx 20rpx;
+  margin-left: 16rpx;
+  font-size: 26rpx;
+  border-bottom-left-radius: 60rpx;
+  border-top-left-radius: 60rpx;
+  border-bottom-right-radius: 60rpx;
+  border-top-right-radius: 60rpx;
+}
+
+
+/* 拒收弹出层 */
+
+.jushouPopup{
+  border-radius:8px;
+  background-color: #fff;
+}
+.jushouTitle{
+  padding: 30rpx;
+  font-size: 28rpx;
+}
+.inputPopupBox{
+  padding: 0 30rpx 30rpx;
+}
+.inputPopup{
+  padding: 20rpx;
+  border:1px solid rgba(191,191,191,1);
+  border-radius: 15px;
+  font-size:26rpx;
+  font-family:PingFang SC;
+  color:rgba(93,93,93,1);
+}
+.addImgIcon{
+  padding: 30rpx;
+}
+.btnsPopup{
+  margin-top: 15rpx;
+  border: 2rpx solid rgba(222,222,222,1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.btnsPopup view{
+  flex: 1;
+  padding: 30rpx 0;
+  border-top: 1rpx solid rgba(247,247,247,1);
+  font-size: 28rpx;
+  font-weight: 500;
+  text-align:center;
+  border-right: 2rpx solid rgba(247,247,247,1);
+}
+.selectPopup{
+  color:rgba(91,162,242,1);
+  border-right: 0;
+}
+.imgLoad{
+  width:152rpx;
+  height:152rpx;
+  background:rgba(244,244,244,1);
+  border-radius:6px;
+  display: flex;
+  flex-direction: column;
+}
+.imgLoad image{
+  width: 50rpx;
+  height: 41rpx;
+  margin: 30rpx auto;
+}
+.imgLoad text{
+  font-size:18rpx;
+  font-family:PingFang SC;
+  color:rgba(111,111,111,1);
+  text-align: center;
+}
+.chakanImgBox{
+  display: flex;
+  flex-wrap: wrap;
+}
+.chakanImg{
+  box-sizing: border-box;
+  width: 25%;
+  height: 150rpx;
+  padding: 10rpx;
+}
+.chakanImg image{
+  width: 100%;
+  height: 100%;
+}
+
+/* 拒收原因 */
+
+
+.jushouYuanYinBox{
+  width: 80vw;
+  /* height: 80vh; */
+  background-color: #fff;
+}
+.jushouTitleChakn{
+  color: rgba(1,1,1,1);
+  font-size: 28rpx;
+  padding: 20rpx;
+  padding-top: 0;
+  border-bottom: 2rpx solid rgba(222,222,222,1);
+  display: flex;
+  justify-content: center;
+}
+.juShoucloseTitle{
+  color: rgba(91,162,242,1);
+  font-size: 28rpx;
+  padding: 30rpx 0 10rpx 0;
+  border-top: 2rpx solid rgba(222,222,222,1);
+  display: flex;
+  justify-content: center;
+}
+.juSHouHeaderBox{
+  display: flex;
+  margin-top: 20rpx;
+}
+.jushouImgBox{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.jushouImgBox image{
+  width: 100%;
+  height: 100%;
+}
+.juShouDJBHBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.jushouWeiINName{
+  font-size: 30rpx;
+  color:rgba(13,13,13,1);
+}
+.juShouDJBH{
+  font-size: 26rpx;
+  color:rgba(153,153,153,1);
+}
+.jushouLiYouText{
+  font-size: 28rpx;
+  color: #000;
+  padding: 20rpx 0;
+}
+.chakanJushouYuanYin{
+  width: 33.3%;
+  height: 200rpx;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+.chakanJushouYuanYin image{
+  width: 100%;
+  height: 100%;
+}
+.ChakanJushoUImgBox{
+  display: flex;
+  flex-wrap: wrap;
+}

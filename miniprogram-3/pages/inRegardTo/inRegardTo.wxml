@@ -1,0 +1,23 @@
+ <view class="inRegardToBox">
+  <view class="inRegardToImg">
+    <view><image src="http://shxcx.zzshikong.com:8075/Image/Index.png" class="bgImg"></image></view>
+    <view class="logoBox"><image src="http://shxcx.zzshikong.com:8075/Image/Logo.png" class="logo"></image></view>
+  </view>
+  <view class="inRegardToBoxInfo">
+    <view class="wangzhan">
+      <view>官方网站</view>
+      <view class="text">http://www.zzshikong.com</view>
+      <view class="arrow"></view>
+    </view>
+    <view class="kefu">
+      <view>客服热线</view>
+      <view class="text">0371-66009393</view>
+      <view class="arrow"></view>
+    </view>
+    <view class="banben">
+      <view>软件版本</view>
+      <view class="text">1.0.0</view>
+      <view class="arrow"></view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,104 @@
+/**index.wxss**/
+/* @import "/utils/common.wxss"; */
+.container{
+  background-color: #5ba2f3;
+  padding: 100rpx 0;
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 170rpx;
+  height: 170rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  color: #fff;
+  padding-top: 20rpx;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+.btn{
+  width: 400rpx;
+}
+.page__bd{
+  padding-left:30rpx; 
+}
+.weui-panel__hd{
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #D9D9D9;
+  color:rgba(154,154,154,1);
+  font-size: 28rpx;
+}
+navigator{
+  display: flex;
+  border-bottom: 1rpx solid #D9D9D9;
+  padding: 15rpx 0;
+  align-items: center;
+}
+.arrow{
+  width: 18rpx;
+  height: 18rpx;
+  border-top: 2rpx solid #C8C8CD;
+  border-right: 2rpx solid #C8C8CD;
+  position: absolute;
+  right: 20rpx;
+  transform: rotate(45deg);
+}
+
+/* 我的订单 */
+.myOrder{
+  padding:20rpx 30rpx;
+  border-bottom: 1rpx solid #D9D9D9;
+}
+.myOrderOne{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding-bottom:20rpx; 
+  border-bottom: 0.5rpx solid #D9D9D9;
+}
+.myOrderOne>view:first-child{
+  font-weight: 500;
+}
+.myOrderOne>view:nth-child(2){
+  color: #ccc;
+  font-size: 24rpx;
+  margin-right: 60rpx;
+}
+
+.myOrderTwo{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+}
+.myOrderTwo>view{
+  flex: 1;
+
+}
+.myOrderTwo>view>view{
+  font-size: 24rpx;
+  color: #333;
+}
+
+.van-info{
+  background: #5ba2f3 !important;
+}
+.contsa{
+  height: 18rpx;
+  width: 750rpx;
+  margin-left: -30rpx;
+  background:rgba(241,241,241,1);
+}
+.noBorder{
+  border: 0;
+}

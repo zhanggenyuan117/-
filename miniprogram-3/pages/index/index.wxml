@@ -1,0 +1,33 @@
+<view class="storesTheOrder">
+    <!-- 店铺名称 -->
+    <view class="inputView">
+      <label class="loginLab">店铺名称:</label>
+      <input type="text" placeholder="请输入店铺名称" bindinput="dianpuumingchengInput" />
+    </view>
+    <!-- 收货电话 -->
+    <view class="inputView">
+      <label class="loginLab">收货电话:</label>
+      <input type="number" placeholder="请输入电话" bindinput="shouhuodianhuaInput" />
+    </view>
+    <!-- 选择地址 -->
+    <view class="selectAdd inputView">
+      <view class="section__title">收货地址:</view>
+      <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+        <view class="picker">
+         --{{region[0]}} -- {{region[1]}} -- {{region[2]}}--
+        </view>
+      </picker>
+    </view>
+    <!-- 输入的详细地址 -->
+    <view class="address">
+      <input type="text" placeholder="请输入详细地址" bindinput="shouhuodizhiInput"></input>
+    </view>
+    <!-- 组织编码 -->
+    <view class="inputView">
+      <label>组织编码:</label>
+      <input placeholder="组织编码" type="text"></input>
+    </view>
+    <view class="btn">
+      <button class="selectBtn" bindtap="notarizeHandle">确认</button>
+    </view>
+</view>

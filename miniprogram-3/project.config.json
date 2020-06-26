@@ -1,0 +1,289 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.10.4",
+	"appid": "wxf6b806f2c8a5ad16",
+	"projectname": "miniprogram-3",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/evaluate/evaluate",
+					"pathName": "pages/evaluate/evaluate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "pages/my",
+					"pathName": "pages/class/class",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/logistics/logistics",
+					"pathName": "pages/logistics/logistics",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/details/details",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/details/details",
+					"pathName": "pages/details/details",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/evaluate2/evaluate2",
+					"pathName": "pages/evaluate2/evaluate2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dingdan/dingdan",
+					"pathName": "pages/dingdan/dingdan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/onlyPing/onlyPing",
+					"pathName": "pages/onlyPing/onlyPing",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/binding/binding",
+					"pathName": "pages/binding/binding",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindingList/bindingList",
+					"pathName": "pages/bindingList/bindingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/input/input",
+					"pathName": "pages/input/input",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindingList/bindingList",
+					"pathName": "pages/bindingList/bindingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindingList/bindingList",
+					"pathName": "pages/bindingList/bindingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/shiyan/shiyan",
+					"pathName": "pages/shiyan/shiyan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/onlyPing2/onlyPing2",
+					"pathName": "pages/onlyPing2/onlyPing2",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/binding/binding",
+					"pathName": "pages/binding/binding",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/binding/binding",
+					"pathName": "pages/binding/binding",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindingChangJia/bindingChangJia",
+					"pathName": "pages/bindingChangJia/bindingChangJia",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/binding/binding",
+					"pathName": "pages/binding/binding",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindingList/bindingList",
+					"pathName": "pages/bindingList/bindingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/bindingList/bindingList",
+					"pathName": "pages/bindingList/bindingList",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/class/class",
+					"pathName": "pages/class/class",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/class/class",
+					"pathName": "pages/class/class",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dingdan/dingdan",
+					"pathName": "pages/dingdan/dingdan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/invoice/invoice",
+					"pathName": "pages/invoice/invoice",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/inRegardTo/inRegardTo",
+					"pathName": "pages/inRegardTo/inRegardTo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/inRegardTo/inRegardTo",
+					"pathName": "pages/inRegardTo/inRegardTo",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/evaluate/evaluate",
+					"pathName": "pages/evaluate/evaluate",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/dingdan/dingdan",
+					"pathName": "pages/dingdan/dingdan",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/StoresInformation/StoresInformation",
+					"pathName": "pages/StoresInformation/StoresInformation",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/class/class",
+					"pathName": "pages/class/class",
+					"scene": null
+				}
+			]
+		}
+	}
+}

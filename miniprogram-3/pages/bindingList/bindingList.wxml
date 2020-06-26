@@ -1,0 +1,39 @@
+<view class="bindingList">
+  <scroll-view class="views" scroll-y lower-threshold="66" 
+  bindscrolltolower="lower"
+  
+  refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-triggered="{{triggered}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    refresher-background="rgba(247,247,247,1)"
+
+  >
+    <radio-group bindchange="radioChangeKeHu">
+      <radio wx:for="{{list}}" wx:key="id" color="#5ba2f3" data-CustomerId="{{item.CustomerId}}" data-ManufactorId="{{item.ManufactorId}}" style="width:100%;padding:10rpx 0;" bindtap="getCustomerId">
+        <view class="radioOne xiala">
+          <view class="xialaView">
+            <view class="xialatext">客户名称:</view>
+            <view class="xialaDong">{{item.CustomerName}}</view>
+          </view>
+          <view class="xialaView">
+            <view class="xialatext">厂家名称:</view>
+            <view class="xialaDong">{{item.ManufactorName}}</view>
+          </view>
+          <view class="xialaView">
+            <view class="xialatext">审批状态:</view>
+            <view class="xialaDong">{{item.Is_Sp}}</view>
+          </view>
+        </view>
+      </radio>
+    </radio-group>
+  </scroll-view>
+
+</view>
+
+<view class="btns">
+  <button class="jiechu" bindtap="jiechu">解除绑定</button>
+  <button class="commit" bindtap="commit">追加绑定</button>
+</view>

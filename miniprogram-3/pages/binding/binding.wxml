@@ -1,0 +1,43 @@
+
+<view class="binDingBox">
+<!-- 厂家信息 -->
+  <view class="changjia">
+    <view class="changjiaView">
+      <view class="changjiaText">供应商信息:</view>
+      <view>
+        <input placeholder="请输入供应商名称" bindtap="jumpChangJia" value="{{dwbh}}"></input>
+        <view class="search"><image src="/images/search.png" class="search"></image></view>
+      </view>
+    </view>
+  </view>
+  <!-- 客户信息 -->
+  <view class="changjia kehu">
+    <view class="changjiaView kehuViewFaze">
+      <view class="changjiaText kehuText">客户信息:</view>
+      <view class="kehuViewBox">
+      <!-- value="{{inputRadioVal}}" -->
+        <input placeholder="请输入客户名称" class="kehuInput searchInput" bindinput="searchInputValue"></input>
+        <view class="search kehuView" bindtap="keHuHandle"><image src="/images/search.png" class="searchIcon"></image></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 先留出的信息 -->
+  <scroll-view scroll-y lower-threshold="50" bindscrolltolower="lower" class="scrollView">
+     <view wx:if="{{onLoadShuJu}}">
+      <radio-group bindchange="radioChangeKeHu">
+        <radio wx:for="{{onLoadShuJu}}" wx:key="Id" value="{{item.CustomerId}}" color="#5ba2f3" class="radio">
+          <view class="xiala">
+            <view class="xialaView"> <view class="xialatext">客户名称:</view><view class="xialaDong">{{item.dwmch}}</view></view>
+            <view class="xialaView"> <view class="xialatext">联系电话:</view><view class="xialaDong">{{item.lxrdh}}</view></view>
+            <view class="xialaView"> <view class="xialatext">客户地址:</view><view class="xialaDong">{{item.dzhdh}}</view></view>
+          </view>
+        </radio>
+      </radio-group>
+    </view>
+  </scroll-view> 
+  <!-- 绑定按钮 -->
+  <view class="btns">
+    <button class="commit" bindtap="getInfo">绑定</button>
+  </view>
+</view>

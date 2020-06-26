@@ -1,0 +1,60 @@
+
+<view class="onlyPingBox" wx:for="{{evalList}}" wx:key="index">
+   <!-- 头 -->
+   <view class="onlyHeader">
+      <view class="header">
+        <image src="{{item.WxTxurl}}"></image>
+      </view>
+      <view class="onlyUser">
+        <view class="userName">{{item.WxName}}</view>
+        <view class="djbh">
+          <text>单据编号:</text>
+          <text style="margin-left:10rpx">{{item.OrderId}}</text>
+        </view>
+      </view>
+   </view>
+   <!-- 打分 -->
+   <view class="dafen">
+    <view>
+      <text>司机态度</text>
+      <text class="fen">{{ item.DriverAttitude }}.0分</text>
+    </view>  
+    <view>
+      <text>送货速度</text>
+      <text class="fen">{{ item.DeliverySpeed }}.0分</text>
+    </view>  
+    <view>
+      <text>包装完整</text>
+      <text class="fen">{{ item.PackageIntegrity }}.0分</text>
+    </view>  
+    <view>
+      <text>物品正确</text>
+      <text class="fen">{{ item.ItemCheck }}.0分</text>
+    </view>  
+   </view>
+   <!-- 备注 -->
+   <view class="beizhu">{{item.Remark}}</view>
+   <!-- 图片 -->
+   <view class="onlyImg" wx:if="{{arrImg[index].length<=4}}">
+      <view wx:for="{{arrImg[index]}}" wx:key="index">
+        <image src="{{item}}" bindtap="yulanImg" data-index="{{item}}"></image>
+      </view>
+   </view>
+
+   <view class="onlyImgDaYufour" wx:if="{{arrImg[index].length>4}}">
+      <view wx:for="{{arrImg[index]}}" wx:key="index">
+        <image src="{{item}}" bindtap="yulanImg" data-index="{{item}}"></image>
+      </view>
+   </view>
+   <!-- 标签 -->
+   <view class="biaoqianBox">
+    <view class="biaoqain">
+      <view wx:for="{{biaoqianArr[index]}}" wx:key="index">{{item}}</view>
+    </view>
+   </view>
+   <!-- 时间 -->
+   <view class="onlyTime">
+    <view></view>
+    <view>{{item.AddTime}}</view>
+   </view>
+</view>

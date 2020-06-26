@@ -1,0 +1,4 @@
+<view>
+  门店信息
+  <button open-type="getPhoneNumber"  bindgetphonenumber="getPhoneNumber">手机号登录</button>
+</view>

@@ -1,0 +1,80 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" class="btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo" bindtap="login">登录 </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+
+
+
+<view class="page__bd">
+  <view class="weui-panel">
+    <view class="weui-panel__hd">个人中心</view>
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_small-appmsg">
+        <view class="weui-cells weui-cells_in-small-appmsg">
+          <navigator open-type="switchTab" url="/pages/class/class" class="weui-cell weui-cell_access" -->
+
+            <view class="weui-cell__hd">
+              <image src="/images/reg.png" style="width: 34rpx;height: 34rpx;margin-right: 5px; margin-top:18rpx;" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>我的订单</view>
+            </view>
+            <view class="arrow"></view>
+          </navigator>
+          <navigator url="../evaluate2/evaluate2" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/edit.png" style="width: 34rpx;height: 34rpx;margin-right: 5px; margin-top:18rpx;" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>查看评价</view>
+            </view>
+            <view class="arrow"></view>
+          </navigator>
+
+          <navigator url="../bindingList/bindingList" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/get.png" style="width: 34rpx;height: 34rpx;margin-right: 5px; margin-top:18rpx;" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>查看绑定</view>
+            </view>
+            <view class="arrow"></view>
+          </navigator>
+
+          <!-- <navigator url="../StoresInformation/StoresInformation" bindtap="about" class="weui-cell weui-cell_access noBorder" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/mendian.png" style="width: 34rpx;height: 34rpx;margin-right: 5px; margin-top:18rpx;" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>门店信息</view>
+            </view>
+            <view class="arrow"></view>
+          </navigator> -->
+          <view class="contsa">
+          </view>
+          <navigator url="../inRegardTo/inRegardTo" class="weui-cell weui-cell_access1" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image src="/images/help.png" style="width: 34rpx;height: 34rpx;margin-right: 5px; margin-top:18rpx;" />
+            </view>
+            <view class="weui-cell__bd weui-cell_primary">
+              <view>关于本程序</view>
+            </view>
+            <view class="arrow"></view>
+          </navigator>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- <navigator url="../StoresInformation/StoresInformation">
+<view>
+  <button color="#f00">跳转111111111111</button>
+</view>
+</navigator> -->

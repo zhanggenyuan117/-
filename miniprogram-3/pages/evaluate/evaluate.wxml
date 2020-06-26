@@ -1,0 +1,98 @@
+
+<!--pages/SPPingjia/SPPingjia.wxml-->
+<!--服务评价-->
+<view class="service">
+  <!--司机态度评分-->
+  <view class='score'>
+    <view class='left'>
+      司机态度评分
+    </view>
+    <view class='right'>
+       <view bindtap="starTap" data-index="{{index}}"  class="star" wx:for="{{userStars}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+      <text class='rtxt'>{{wjxScore}}.0分</text>
+    </view>
+  </view>
+   <!--送货速度评分-->
+  <view class='score'>
+    <view class='left'>
+      送货速度评分
+    </view>
+    <view class='right'>
+       <view bindtap="starTap1" data-index="{{index}}"  class="star" wx:for="{{userStars1}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+      <text class='rtxt'>{{wjxScore1}}.0分</text>
+    </view>
+  </view>
+   <!--包装完整评分-->
+  <view class='score'>
+    <view class='left'>
+      包装完整评分
+    </view>
+    <view class='right'>
+       <view bindtap="starTap2" data-index="{{index}}"  class="star" wx:for="{{userStars2}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+      <text class='rtxt'>{{wjxScore2}}.0分</text>
+    </view>
+  </view>
+   <!--物品正确评分-->
+  <view class='score'>
+    <view class='left'>
+      物品正确评分
+    </view>
+    <view class='right'>
+       <view bindtap="starTap3" data-index="{{index}}"  class="star" wx:for="{{userStars3}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+      <text class='rtxt'>{{wjxScore3}}.0分</text>
+    </view>
+  </view>
+  <!--内容-->
+  <view class='content'>
+    <view class='left'>
+      内容
+    </view>
+    <view class='right'>
+      <!-- <text bindtap='label' class="{{attitude===true ? 'labelColor':'labelColor1'}}" data-count="服务态度好" data-index="{{attitude}}">服务态度好</text>
+      <text bindtap='label1' class="{{time===false? 'labelColor':'labelColor1'}}" data-count="排队时间短" data-index="{{time}}">排队时间短</text>
+      <text bindtap='label2' class="{{efficiency===false?'labelColor':'labelColor1'}}" data-count="效率高" data-index="{{efficiency}}">效率高</text>
+      <text bindtap='label3' class="{{environment===false?'labelColor':'labelColor1'}}" data-count="门店环境好" data-index="{{environment}}">门店环境好</text>
+      <text bindtap='label4' class="{{professional===false?'labelColor':'labelColor1'}}" data-count="很专业" data-index="{{professional}}">很专业</text>  -->
+      <!-- 'selectCountStyle':'' -->
+      <block  wx:for="{{countsArr}}" wx:key="index">
+        <text bindtap="selectCount" data-id="{{index}}" class="{{item.isActive == true ? 'selectCountStyle' : ''}}">{{item.name}}</text>
+      </block>
+    </view> 
+  </view>
+  <!--图片-->
+  <view class='picture'>
+    <view class='left'>
+      图片
+    </view>
+    <view class='right'>
+        <view class="parcelBox">
+          <image src='/images/add.png' class='add' bindtap='choose'></image>
+          <view class="parcel" wx:for="{{tempFilePaths}}" wx:key="index">
+            <image src="{{item}}" class="According" data-index="{{index}}" mode="aspectFill" bindtap="previewImg"></image>
+          </view>
+        </view>
+    </view>
+  </view>
+</view>
+<!--textarea-->
+<view class="contsb">
+
+<view class="conts">
+    <textarea class="areas" placeholder='更多评价请写在这里（最多150字）' minlength="{{min}}" maxlength="{{max}}" bindinput="inputs"> 
+
+    </textarea>
+</view>
+</view>
+
+<!--提交评价-->
+<view class="contsa">
+<button class='btn' bindtap="commitHandle">提交评价</button>
+</view>

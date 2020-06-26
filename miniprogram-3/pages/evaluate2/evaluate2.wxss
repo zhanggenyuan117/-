@@ -1,0 +1,118 @@
+
+
+.onlyPingBox{
+  padding: 20rpx;
+  border-bottom: 30rpx solid rgba(245,245,245,1);
+}
+.onlyHeader{
+  display: flex;
+  padding: 20rpx;
+}
+.header{
+  width: 90rpx;
+  height: 90rpx;
+  border: 1rpx solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 14rpx;
+}
+.header image{
+  width: 100%;
+  height: 100%;
+}
+.onlyUser{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.userName{
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:600;
+  color:rgba(13,13,13,1);
+}
+.djbh{
+  font-size:26rpx;
+  font-family:PingFang SC;
+  color:rgba(153,153,153,1);
+}
+
+/* 打分 */
+.dafen{
+  padding: 20rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(80,80,80,1);
+  display: flex;
+  justify-content: space-between;
+}
+.fen{
+  color:rgba(248,37,37,1);
+}
+/* 备注 */
+.beizhu{
+  padding: 0 20rpx;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  font-weight:500;
+  color:rgba(13,13,13,1);
+}
+/* 标签 */
+.biaoqianBox{
+  padding: 20rpx;
+}
+.biaoqain{
+  display: flex;
+  flex-wrap: wrap;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  color:rgba(137,137,137,1);
+}
+.biaoqain>view{
+  margin-right: 20rpx;
+}
+/* 图片 */
+.onlyImg{
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+}
+.onlyImg view{
+  width: 50%;
+  height: 260rpx;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx 10rpx 0;
+}
+.onlyImg image{
+  width: 100%;
+  height: 100%;
+}
+
+
+.onlyImgDaYufour{
+  padding: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.onlyImgDaYufour view{
+  width: 33.3%;
+  height: 220rpx;
+  box-sizing: border-box;
+  padding: 10rpx;
+}
+.onlyImgDaYufour image{
+  width: 100%;
+  height: 100%;
+}
+/* 时间 */
+.onlyTime{
+  padding: 30rpx;
+  display: flex;
+  font-size:30rpx;
+  font-family:PingFang SC;
+  color:rgba(153,153,153,1);
+  justify-content: space-between;
+}
